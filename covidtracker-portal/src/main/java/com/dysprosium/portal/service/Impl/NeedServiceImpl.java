@@ -23,15 +23,13 @@ public class NeedServiceImpl extends ServiceImpl<NeedMapper, Need> implements Ne
 
     @Autowired
     private NeedMapper needMapper;
-
-
-
+    
     @Override
     public List<NeedInfoVo> getAllNeeds() {
         List<Need> needs = needMapper.selectList(null);
         ArrayList<NeedInfoVo> needInfoVos = new ArrayList<>();
         for (Need need : needs) {
-            needInfoVos.add(new NeedInfoVo(need.getNeedId(), need.getCategory(), need.getDescription(), need.getLevel(), need.getTimeLimit()));
+            needInfoVos.add(new NeedInfoVo(need.getNeedId(), need.getTitle(), need.getCategory(), need.getDescription(), need.getTel(), need.getTimeLimit()));
         }
         return needInfoVos;
     }
@@ -41,5 +39,12 @@ public class NeedServiceImpl extends ServiceImpl<NeedMapper, Need> implements Ne
         int insert = needMapper.insert(need);
         if(insert == 0) return false;
         return true;
+    }
+
+    @Override
+    public NeedInfoVo getNeedById(String needId) {
+        Need need = needMapper.selectById(needId);
+        NeedInfoVo needInfoVo = new NeedInfoVo(need.getNeedId(), need.getTitle(), need.getCategory(), need.getDescription(), need.getTel(), need.getTimeLimit());
+        return needInfoVo;
     }
 }

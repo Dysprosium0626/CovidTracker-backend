@@ -9,7 +9,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -33,6 +32,9 @@ public class Need implements Serializable {
     @TableId(value = "need_id", type = IdType.ASSIGN_ID)
     private String needId;
 
+    @ApiModelProperty(value = "title")
+    private String title;
+
     @ApiModelProperty(value = "category of the need")
     @NotEmpty(message = "category is not null")
     private String category;
@@ -41,9 +43,9 @@ public class Need implements Serializable {
     @NotEmpty(message = "description is not null")
     private String description;
 
-    @ApiModelProperty(value = "level of the need")
-    @NotEmpty(message = "level is not null")
-    private Integer level;
+    @ApiModelProperty(value = "tel of the need")
+    @NotEmpty(message = "tel is not null")
+    private String tel;
 
     @ApiModelProperty(value = "time limit of the need")
     @NotEmpty(message = "time limit is not null")
@@ -61,10 +63,12 @@ public class Need implements Serializable {
     @TableLogic
     private Integer isDeleted;
 
-    public Need(Object category, Object description, Object level, Object timeLimit) {
+    public Need(Object title, Object category, Object description, Object tel, Object timeLimit) {
+        this.title = title.toString();
         this.category = category.toString();
         this.description = description.toString();
-        this.level = Integer.valueOf(level.toString());
+        this.tel = tel.toString();
         this.timeLimit = timeLimit.toString();
     }
+
 }

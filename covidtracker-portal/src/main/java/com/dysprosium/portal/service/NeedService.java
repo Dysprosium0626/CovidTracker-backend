@@ -18,6 +18,6 @@ import java.util.List;
 public interface NeedService extends IService<Need> {
     List<NeedInfoVo> getAllNeeds();
     boolean addNeed(Need need);
-
+    NeedInfoVo getNeedById(String needId);
 
 }

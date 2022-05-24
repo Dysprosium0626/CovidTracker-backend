@@ -19,6 +19,31 @@ spring:
       mysql:
         usePing
 
+  mail:
+    host: smtp.feishu.cn
+    username: support@techtree.tech
+    password: wGac8XyteiUFZxug
+    default-encoding: UTF-8
+    port: 465
+    properties:
+      mail:
+        smtp:
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+        debug: true
+
+  redis:
+    host: 110.42.187.29
+    port: 6379
+    password: 123456
+    jedis:
+      pool:
+        max-active: 100
+        max-idle: 20
+        max-wait: 1000
+        min-idle: 0
+    timeout: 30000
+
 server:
   port: 8088
 

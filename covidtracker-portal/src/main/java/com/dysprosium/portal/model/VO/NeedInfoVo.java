@@ -28,6 +28,9 @@ public class NeedInfoVo implements Serializable {
     @TableId(value = "need_id", type = IdType.ASSIGN_ID)
     private String needId;
 
+    @ApiModelProperty(value = "title of the need")
+    private String title;
+
     @ApiModelProperty(value = "category of the need")
     @NotEmpty(message = "category is not null")
     private String category;
@@ -36,13 +39,12 @@ public class NeedInfoVo implements Serializable {
     @NotEmpty(message = "description is not null")
     private String description;
 
-    @ApiModelProperty(value = "level of the need")
-    @NotEmpty(message = "level is not null")
-    private Integer level;
+    @ApiModelProperty(value = "tel of the need")
+    @NotEmpty(message = "tel is not null")
+    private String tel;
 
     @ApiModelProperty(value = "time limit of the need")
     @NotEmpty(message = "time limit is not null")
     private String timeLimit;
-
 
 }

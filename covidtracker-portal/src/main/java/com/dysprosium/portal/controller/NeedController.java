@@ -39,8 +39,8 @@ public class NeedController {
     @PutMapping("/add")
     @ApiOperation(value = "Add need", notes = "Add need")
     public boolean addNeed(@RequestBody Map<String, Object> needMap) {
-
-        return needService.addNeed(new Need(needMap.get("category"), needMap.get("description"), needMap.get("level"), needMap.get("timeLimit")));
+        System.out.println(needMap.toString());
+        return needService.addNeed(new Need(needMap.get("title") ,needMap.get("category"), needMap.get("description"), needMap.get("tel"), needMap.get("timeLimit")));
     }
 
 
